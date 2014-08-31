@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href='http://fonts.googleapis.com/css?family=Playfair+Display+SC&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+		<title>Commander for WoT</title>
+    </head>
+    <body>
+	
+	<script>
+	// Скрипт делает видимым блоки 2 и 3 попеременно видимыми при нажатии кнопки
+	show.visible = '2';
+	show.hidden = '3';
+	function show(){
+    show.hidden = show.visible;
+    show.visible = (show.visible === '2')?'3':'2';
+    document.getElementById(show.visible).style.display = 'none';
+    document.getElementById(show.hidden).style.display = 'block';
+	}
+	</script>
+
+ 
+        <div id="3" style="display:block" class="select">
+			<form id="mapselform" >
+				<select id="mymenu" size=8>
+					<option value="01">Аэродром</option>
+					<option value="02">Вестфилд</option>
+					<option value="03">Жемчужная река </option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value=""></option>
+					<option value="">2</option>
+				</select>
+			</form>
+
+			<a href="index.html"><img src="img/back.png" class="back"></a>
+			<img src="img/next.png" align="right"  class="next" onClick="show();">
+			
+        </div>
+		
+		<div  id="2" style="display:none" class="main">
+		<canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 0;" ></canvas>
+		<script>
+		var select = document.getElementById('mymenu');
+		mymenu.addEventListener('change', function() {
+        var value = mymenu.value;
+		var mapname = 'img/' + value + '.jpg';
+		var map    = document.getElementById("map");
+        var ctx    = map.getContext('2d'); 
+        var pic    = new Image();              
+	    map.width  = document.body.clientWidth;
+        map.height = document.body.clientWidth;
+        pic.src    = mapname; 
+        pic.onload = function() {    
+        ctx.drawImage(pic, 0, 0,map.width,map.width); 
+        }
+		});
+		</script>
+		<!-- style="position: absolute; left: 0; top: 0; z-index: 3;" -->
+		<img id="lt1" src="img/lt.png" width="10%" style="position: absolute;  z-index: 3;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+		<img id="lt2" src="img/lt.png" width="10%" style="position: absolute;  z-index: 4;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+		<img id="lt3" src="img/lt.png" width="10%" style="position: absolute;  z-index: 5;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+		<script>
+		function move_object(event) { 
+		// Подавить событие 
+		event.preventDefault(); 
+		var left=event.touches[0].pageX; 
+		var top=event.touches[0].pageY; 
+		var name=event.touches[0].target; 
+		// Переместить элемент 
+		var el=document.getElementById(tmp); 
+		el.style.top=top+'px'; 
+		el.style.left=left+'px'; 
+		} 
+ 		</script>
+		<a href="index.html"><img src="img/back.png" class="back"></a>
+		</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
