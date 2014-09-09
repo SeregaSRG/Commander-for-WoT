@@ -13,13 +13,13 @@
                 webSocket.close();
             };
  
-            socket.onclose = function(event) {
+            webSocket.onclose = function(event) {
 				if (event.wasClean) {
-				alert('Соединение закрыто чисто');
+				alert('Clean');
 				} else {
-				alert('Обрыв соединения'); // например, "убит" процесс сервера
+				alert('Error'); // например, "убит" процесс сервера
 				}
-				alert('Код: ' + event.code + ' причина: ' + event.reason);
+				alert('Code: ' + event.code + ' reason: ' + event.reason);
 				};
 
         </script>
