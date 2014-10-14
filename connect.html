@@ -123,6 +123,7 @@
                 pic.onload = function() {    
                 ctx.drawImage(pic, 0, 0,map.width,map.width); 
                 }
+				
 				var i = 1;
 				while (i < 11) {
 				var tmpppp = stoka.substr(2+i*6, 5);
@@ -136,6 +137,23 @@
 				}
 				i++;
 				}
+				
+				var i = 1;
+				while (i < 11) {
+				var tmpppp = stoka.substr(62+i*6, 5);
+				if (tmpppp != "00,00") {
+				var elem = document.getElementById('st'+i);
+				var top = stoka.substr(62+i*6, 2);
+				var left = stoka.substr(62+i*6+3, 2);
+                elem.style.top=top+'%'; 
+                elem.style.left=left+'%'; 
+				elem.style.display='block';
+				}
+				i++;
+				}
+				
+				
+				
 				}
 		}
 		</script>
