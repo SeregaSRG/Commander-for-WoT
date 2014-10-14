@@ -86,7 +86,7 @@
                                    var map    = document.getElementById("map");
                                          var ctx    = map.getContext('2d'); 
                                          var pic    = new Image();              
-                    map.width  = document.body.clientWidth;
+										 map.width  = document.body.clientWidth;
                                          map.height = document.body.clientWidth;
                                          pic.src    = mapname; 
                                          pic.onload = function() {    
@@ -301,7 +301,13 @@
 				var elem = document.getElementById('lt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//st
@@ -310,7 +316,13 @@
 				var elem = document.getElementById('st'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//tt
@@ -319,7 +331,13 @@
 				var elem = document.getElementById('tt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//pt
@@ -328,7 +346,13 @@
 				var elem = document.getElementById('pt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//sense
@@ -337,7 +361,13 @@
 				var elem = document.getElementById('sense'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//danger
@@ -346,7 +376,13 @@
 				var elem = document.getElementById('danger'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				//alarm
@@ -355,7 +391,13 @@
 				var elem = document.getElementById('alarm'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
 				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var tmppp = w + ',' + h;
+				if (tmppp == "0,0") {
+				database = database + '.00,00';
+				}
+				else {
 				database = database + '.' + w +','+h;
+				}
 				i++;
 				}
 				$.post( 'http://commander4wot.ru/obr.php', {dat:database}, success);
