@@ -9,23 +9,12 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
         <title>Commander for WoT</title>
-			<style>
-				body 
-				{ 
-				background: url(img/Dimsersmall2.png); 
-				background-position:center center ;	
-				background-attachment:fixed;
-				background-repeat: no-repeat;
-				background-size: cover;
-				}
-			</style>
-		
     </head>
     <body>
 	
 	    <script>
             // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
-            show.visible = '2';
+			show.visible = '2';
             show.hidden = '3';
             function show(){
                show.hidden = show.visible;
@@ -104,15 +93,18 @@
 				
 		<canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 0;" ></canvas>
 		<script>
+		
+		
 		function load_data_by_id(){
+		var number_letter = 8;
+		var h = "";
+		var left = "";
+		var Xt = "";
 		var id_for_load = document.getElementById("form_id").value;
 		$.post( 'http://commander4wot.ru/load.php', {dat:id_for_load}, success);
 				function success(msg)   {
-				var stoka = msg;
-				alert (stoka);
-				// загрузился массив данных
-				var map_name = stoka.substr(5, 2); 
-				// рисуем canvas 
+				var stoka = msg;	// загрузился массив данных
+				var map_name = stoka.substr(5, 2); 	// рисуем canvas 
                 var mappath = 'img/' + map_name + '.jpg';
                 var map    = document.getElementById("map");
                 var ctx    = map.getContext('2d'); 
@@ -124,39 +116,48 @@
                 ctx.drawImage(pic, 0, 0,map.width,map.width); 
                 }
 				
-				var i = 1;
+				var ii = 1;
+
+				while (ii < 8) {
+				if (ii==1){Xt='lt'};
+				if (ii==2){Xt='st'};
+				if (ii==3){Xt='tt'};
+				if (ii==4){Xt='pt'};
+				if (ii==5){Xt='sense'};
+				if (ii==6){Xt='danger'};
+				if (ii==7){Xt='alarm'};
+				var i = 1; 
 				while (i < 11) {
-				var tmpppp = stoka.substr(2+i*6, 5);
-				if (tmpppp != "00,00") {
-				var elem = document.getElementById('lt'+i);
-				var top = stoka.substr(2+i*6, 2);
-				var left = stoka.substr(2+i*6+3, 2);
-                elem.style.top=top+'%'; 
+				while (stoka.substr(number_letter, 1) != ","){ //проверяем первые символы до зпт
+				left = left + stoka.substr(number_letter, 1);
+				number_letter++;
+				}
+				number_letter++; // пропускаем зпт
+				while (stoka.substr(number_letter, 1) != "."){ //проверяем первые символы до тчк
+				h = h + stoka.substr(number_letter, 1);
+				var top_h = document.documentElement.clientWidth*h/100;
+				number_letter++;
+				}
+				number_letter++; // пропускаем тчк
+				if (left+h != "0000") {
+				var elem = document.getElementById(Xt+i);
+				elem.style.top=top_h+'px'; 
                 elem.style.left=left+'%'; 
 				elem.style.display='block';
 				}
 				i++;
+				h = "";
+				left = "";
 				}
-				
-				var i = 1;
-				while (i < 11) {
-				var tmpppp = stoka.substr(62+i*6, 5);
-				if (tmpppp != "00,00") {
-				var elem = document.getElementById('st'+i);
-				var top = stoka.substr(62+i*6, 2);
-				var left = stoka.substr(62+i*6+3, 2);
-                elem.style.top=top+'%'; 
-                elem.style.left=left+'%'; 
-				elem.style.display='block';
+				ii++;
 				}
-				i++;
-				}
-				
-				
-				
+
 				}
 		}
 		</script>
+
+	<img src="img/back.png" class="back" onClick="show();"></a>
+	<img src="img/refresh.png" align="right"  class="next" onClick="load_data_by_id();">
 		
 		
 		

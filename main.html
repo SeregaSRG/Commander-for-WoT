@@ -26,11 +26,10 @@
 		
         <div id="3" style="display:block" class="select">
             <form id="mapselform" >
-                <select id="mymenu" size=8>
-                    <option value="01">Аэродром</option>
+                <select id="mymenu" >
+					<optgroup class="summer_map"label="Летние карты">
                     <option value="02">Вестфилд</option>
                     <option value="03">Жемчужная река </option>
-                    <option value="04">Заполярье</option>
                     <option value="05">Карелия</option>
                     <option value="06">Комарин</option>
                     <option value="07">Лайв Окс</option>
@@ -40,34 +39,46 @@
                     <option value="11">Монастырь</option>
                     <option value="12">Мурованка</option>
                     <option value="13">Перевал</option>
-                    <option value="14">Песчаная река</option>
-                    <option value="15">Порт</option>
-                    <option value="16">Провинция</option>
+					<option value="15">Порт</option>
+					<option value="16">Провинция</option>
                     <option value="17">Прохоровка</option>
                     <option value="18">Редшир</option>
                     <option value="19">Рудники</option>
                     <option value="20">Руинберг</option>
                     <option value="21">Рыбацкая бухта</option>
-                    <option value="22">Священная долина</option>
-                    <option value="23">Северогорск</option>
-                    <option value="24">Северо-Запад</option>
-                    <option value="25">Степи</option>
-                    <option value="26">Тихий берег</option>
+					<option value="24">Северо-Запад</option>
+					<option value="25">Степи</option>	
+					<option value="26">Тихий берег</option>
                     <option value="27">Топь</option>
                     <option value="28">Тундра</option>
                     <option value="29">Уайдпарк</option>
                     <option value="30">Утёс</option>
-                    <option value="31">Фьорды</option>
-                    <option value="32">Хайвей</option>
+					<option value="31">Фьорды</option>
+					<option value="32">Хайвей</option>
                     <option value="33">Химмельсдорф</option>
                     <option value="34">Хребет дракона</option>
-                    <option value="35">Эль-Халлуф</option>
-                    <option value="36">Энск</option>
-                    <option value="37">Эрленберг</option>
+					<option value="36">Энск</option>
                     <option value="38">Южный берег</option>
                     <option value="39">Скрытая деревня</option>
-                    <option value="40">Виндсторм</option>
-                    <option value="41">Харьков</option>
+					</optgroup>
+					
+					<optgroup class="desert_map" label="Пустынные карты">
+                    <option value="01">Аэродром</option>
+                    <option value="14">Песчаная река</option>
+					<option value="35">Эль-Халлуф</option>
+					</optgroup>
+					
+					<optgroup class="winter_map" label="Зимние карты">
+					<option value="40">Виндсторм</option>
+                    <option value="04">Заполярье</option>
+					<option value="22">Священная долина</option>
+                    <option value="23">Северогорск</option>
+					<option value="41">Харьков</option>
+					<option value="37">Эрленберг</option>
+					</optgroup>
+                    
+                    
+                    
                 </select>
             </form>
             <a href="index.html"><img id="rer" src="img/back.png" class="back"></a>
@@ -184,7 +195,7 @@
             </script>
 			
             <div id="4" class="div_buttons">
-                <img id="butPT" src="img/pt.png" width="20%" onClick="addingPT();" ><img id="butLT" src="img/lt.png" width="20%" onClick="addingLT();" ><img id="butST" src="img/st.png" width="20%" onClick="addingST();" ><img id="butTT" src="img/tt.png" width="20%" onClick="addingTT();" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><a href="index.html"><img src="img/back.png" width="50%" ></a><img src="img/send.png" width="50%" onClick="send();" >
+                <img id="butPT" src="img/pt.png" width="20%" onClick="addingPT();" ><img id="butLT" src="img/lt.png" width="20%" onClick="addingLT();" ><img id="butST" src="img/st.png" width="20%" onClick="addingST();" ><img id="butTT" src="img/tt.png" width="20%" onClick="addingTT();" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><img src="img/back.png" width="50%" onClick="show();"><img src="img/send.png" width="50%" onClick="send();" >
                 <script>
                     var numberPT = 0;
                     var numberLT = 0;
@@ -246,7 +257,7 @@
                 </script>
             </div>
             <div id="5" style="display:none" class="div_buttons">
-                <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();" ><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();" ><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();" ><img id="butNONE" src="img/none.png" width="20%" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><img src="img/back.png" width="50%" onClick="mapcolor();">
+                <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();" ><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();" ><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();" ><img id="butNONE" src="img/none.png" width="20%" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><div align="center"><img src="img/conk.png" width="92%" onClick="mapcolor();"></div>
                 <script>
                     // Скрипт меняет тип карты с простой на расширенную.
                     var ch=0
@@ -293,14 +304,15 @@
 				id = id^0; // округление битовым оператором
 				
 				function send () {
+				var database = "";
 				value = mymenu.value;
-				var database = id +'.'+value;
+				database = id +'.'+value;
 				//lt
 				var i = 1;
 				while (i < 11) {
 				var elem = document.getElementById('lt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -315,7 +327,7 @@
 				while (i < 11) {
 				var elem = document.getElementById('st'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -330,7 +342,7 @@
 				while (i < 11) {
 				var elem = document.getElementById('tt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -345,7 +357,7 @@
 				while (i < 11) {
 				var elem = document.getElementById('pt'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -360,7 +372,7 @@
 				while (i < 4) {
 				var elem = document.getElementById('sense'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -375,7 +387,7 @@
 				while (i < 4) {
 				var elem = document.getElementById('danger'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
@@ -390,21 +402,12 @@
 				while (i < 4) {
 				var elem = document.getElementById('alarm'+i);
 				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientHeight*100);
+				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
 				var tmppp = w + ',' + h;
 				if (tmppp == "0,0") {
 				database = database + '.00,00';
 				}
 				else {
-				
-				// если координата содержит ноль, то мы меняем на 00 для приобретения вида "ww,hh"
-				if (h=='0'){
-				h='00';
-				}
-				if (w=='0'){
-				w='00';
-				}
-				
 				database = database + '.' + w +','+h;
 				}
 				i++;
