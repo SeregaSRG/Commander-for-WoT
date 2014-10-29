@@ -412,6 +412,7 @@
 				}
 				i++;
 				}
+				database = database + '.';
 				$.post( 'http://commander4wot.ru/obr.php', {dat:database}, success);
 				function success(msg)   {
 				alert (msg);

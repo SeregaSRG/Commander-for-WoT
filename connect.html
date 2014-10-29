@@ -111,13 +111,14 @@
 		function load_data_by_id(){
 		var number_letter = 8;
 		var h = "";
-		var left = "";
+		var w = "";
 		var Xt = "";
+		var value_of = "11";
 		var id_for_load = document.getElementById("form_id").value;
 		$.post( 'http://commander4wot.ru/load.php', {dat:id_for_load}, success);
 				function success(msg)   {
 				var stoka = msg;	// загрузился массив данных
-				var map_name = stoka.substr(5, 2); 	// рисуем canvas 
+				var map_name = stoka.substr(5, 2); 	// рисуем canvas (выбираем 2 символа, начиная с 5 (номер карты))
                 var mappath = 'img/' + map_name + '.jpg';
                 var map    = document.getElementById("map");
                 var ctx    = map.getContext('2d'); 
@@ -130,7 +131,6 @@
                 }
 				
 				var ii = 1;
-
 				while (ii < 8) {
 				if (ii==1){Xt='lt'};
 				if (ii==2){Xt='st'};
@@ -140,27 +140,28 @@
 				if (ii==6){Xt='danger'};
 				if (ii==7){Xt='alarm'};
 				var i = 1; 
-				while (i < 11) {
+				if (Xt=="sense") {value_of="4"};
+				while (i < value_of) {
 				while (stoka.substr(number_letter, 1) != ","){ //проверяем первые символы до зпт
-				left = left + stoka.substr(number_letter, 1);
+				w = w + stoka.substr(number_letter, 1);
 				number_letter++;
 				}
 				number_letter++; // пропускаем зпт
 				while (stoka.substr(number_letter, 1) != "."){ //проверяем первые символы до тчк
 				h = h + stoka.substr(number_letter, 1);
-				var top_h = document.documentElement.clientWidth*h/100;
+				var top_h = document.documentElement.clientWidth*h/100; //рассчитываем положение сверху исходя из процентов и ширины
 				number_letter++;
 				}
 				number_letter++; // пропускаем тчк
-				if (left+h != "0000") {
+				if (w+h != "0000") {
 				var elem = document.getElementById(Xt+i);
 				elem.style.top=top_h+'px'; 
-                elem.style.left=left+'%'; 
+                elem.style.left=w+'%'; 
 				elem.style.display='block';
 				}
 				i++;
 				h = "";
-				left = "";
+				w = "";
 				}
 				ii++;
 				}
