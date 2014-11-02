@@ -86,27 +86,28 @@
         </div>
         <div  id="2" style="display:none" class="main">
             <div class="div_canvas">
-                <canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 0;" ></canvas>
-				
                 <script>
                     // canvas на котором рисуется карта. Запускается после выбора элемента из списка
                                    var select = document.getElementById('mymenu');
                                    mymenu.addEventListener('change', function() {
                                    var value = mymenu.value;
-                                   var mapname = 'img/' + value + '.jpg';
+                                   var mappath = 'img/clean/' + value + '.jpg';
                                    var map    = document.getElementById("map");
-                                         var ctx    = map.getContext('2d'); 
-                                         var pic    = new Image();              
-										 map.width  = document.body.clientWidth;
-                                         map.height = document.body.clientWidth;
-                                         pic.src    = mapname; 
-                                         pic.onload = function() {    
-                                         ctx.drawImage(pic, 0, 0,map.width,map.width); 
-                                         }
+                                   map.src      = mappath;    
+								   map.class    = value;		
+
+									var del = document.getElementById('type_img');
+									del.style.display='none';
+									
+									var del = document.getElementById('color_img');
+									del.style.display='none';
                                    });
                     
                                
                 </script>
+				<img id="map" src="img/nomap.png" width="100%" style=" position: absolute; z-index: 1; left: 0%"  >
+				<img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%"  >
+				<img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%"  >
 				
                 <img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
                 <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
@@ -257,45 +258,48 @@
                 </script>
             </div>
             <div id="5" style="display:none" class="div_buttons">
-                <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();" ><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();" ><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();" ><img id="butNONE" src="img/none.png" width="20%" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><div align="center"><img src="img/conk.png" width="92%" onClick="mapcolor();"></div>
-                <script>
-                    // Скрипт меняет тип карты с простой на расширенную.
-                    var ch=0
-                    
-					function mapcolor(){
-                    if (ch==0) {
-                    ch = 1;
-                    var value = mymenu.value;
-                    var mapname = 'img/mask'+value+'.jpg';
-                    var map    = document.getElementById("map");
-                                             var ctx    = map.getContext('2d'); 
-                                             var pic    = new Image();              
-											 map.width  = document.body.clientWidth;
-                                             map.height = document.body.clientWidth;
-                                             pic.src    = mapname; 
-                                             pic.onload = function() {    
-                                             ctx.drawImage(pic, 0, 0,map.width,map.width); 
-                                             }	
-                    }
-					
-                    else {
-                    ch = 0;
-                    var value = mymenu.value;
-                    var mapname = 'img/'+value+'.jpg';
-                    var map    = document.getElementById("map");
-                                             var ctx    = map.getContext('2d'); 
-                                             var pic    = new Image();              
-											 map.width  = document.body.clientWidth;
-                                             map.height = document.body.clientWidth;
-                                             pic.src    = mapname; 
-                                             pic.onload = function() {    
-                                             ctx.drawImage(pic, 0, 0,map.width,map.width); 
-                                             }
-                    }
-					
-                    }
-                </script>
-				
+                <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();" ><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();" ><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();" ><img id="butNONE" src="img/none.png" width="20%" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><div align="center"><img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%"></div>
+
+				<script>
+		var number_of_color = '1';
+		var map      = document.getElementById("map");
+		
+		function type_standart(){
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/standart/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}
+		
+		function type_meet(){		
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/meet/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}
+		
+		function type_storm(){
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/storm/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}	
+		
+		function color(){
+		var adding = document.getElementById('color_img');
+		var map_name = map.class;
+		if (number_of_color=='1'){
+		adding.src='img/add/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		number_of_color = '2';
+		}
+		else {		
+		adding.style.display='none';
+		number_of_color = '1';
+		}
+		}
+
+	</script>
 				
 				
 				<script>

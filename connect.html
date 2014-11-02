@@ -46,8 +46,12 @@
 		</div>
 		<!-- Блок с картой-->
 		<div id="2" style="display:none" class="loadMap">
+				
+				<img id="map" src="img/load.gif" width="100%" style=" position: absolute; z-index: 1; left: 0%"  >
+				<img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%"  >
+				<img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%"  >
 		
-		<img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%"  >
+				<img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%"  >
                 <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%"  >
                 <img id="lt3" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%"  >
                 <img id="lt4" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%"  >
@@ -104,7 +108,7 @@
                 <img id="alarm3" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 40%;"  >
 				
 				
-		<canvas id="map" style="position: absolute; left: 0; top: 0; z-index: 0;" ></canvas>
+	
 		<script>
 		
 		
@@ -118,19 +122,12 @@
 		$.post( 'http://commander4wot.ru/load.php', {dat:id_for_load}, success);
 				function success(msg)   {
 				var stoka = msg;	// загрузился массив данных
-				var map_name = stoka.substr(5, 2); 	// рисуем canvas (выбираем 2 символа, начиная с 5 (номер карты))
-                var mappath = 'img/' + map_name + '.jpg';
-                var map    = document.getElementById("map");
-                var ctx    = map.getContext('2d'); 
-                var pic    = new Image();              
-                map.width  = document.body.clientWidth;
-                map.height = document.body.clientWidth;
-                pic.src    = mappath; 
-                pic.onload = function() {    
-                ctx.drawImage(pic, 0, 0,map.width,map.width); 
-                }
-				
-				var ii = 1;
+				var map_name = stoka.substr(5, 2); 	// выбираем 2 символа, начиная с 5 (номер карты)
+				var mappath  = 'img/clean/' + map_name + '.jpg';
+                var map      = document.getElementById("map");
+				map.src      = mappath;
+				map.class    = map_name;
+               	var ii = 1;
 				while (ii < 8) {
 				if (ii==1){Xt='lt'};
 				if (ii==2){Xt='st'};
@@ -167,11 +164,57 @@
 				}
 
 				}
+		
+		
 		}
+		
 		</script>
-				
-	<img src="img/back.png" class="back" onClick="show();"></a>
-	<img src="img/refresh.png" align="right"  class="next" onClick="load_data_by_id();">
+		
+		<div id="4" class="div_buttons">
+		<img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%"><img src="img/back.png"  width="50%" onClick="show();"></a><img src="img/refresh.png"  width="50%" onClick="load_data_by_id();">
+	</div>
+		<script>
+		var number_of_type = '1';
+		var number_of_color = '1';
+		var map      = document.getElementById("map");
+		
+		function type_standart(){
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/standart/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}
+		
+		function type_meet(){		
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/meet/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}
+		
+		function type_storm(){
+		var map_name = map.class;
+		var adding = document.getElementById('type_img');
+		adding.src='img/storm/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		}	
+		
+		function color(){
+		var adding = document.getElementById('color_img');
+		var map_name = map.class;
+		if (number_of_color=='1'){
+		adding.src='img/add/'+map_name+'.png'; // map_name вместо 02
+		adding.style.display='block';
+		number_of_color = '2';
+		}
+		else {		
+		adding.style.display='none';
+		number_of_color = '1';
+		}
+		}
+
+	</script>
+
 		
 		
 		
