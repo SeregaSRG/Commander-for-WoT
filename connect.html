@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html>
-    <head>
-		<meta name="inmobi-site-verification" content="79ccca88631a95d3d2960098aac62ad9">
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-        <title>Commander for WoT</title>
-    </head>
-    <body>
-	
-	    <script>
-            // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
-			show.visible = '2';
-            show.hidden = '3';
-            function show(){
-               show.hidden = show.visible;
-               show.visible = (show.visible === '2')?'3':'2';
-               document.getElementById(show.visible).style.display = 'none';
-               document.getElementById(show.hidden).style.display = 'block';
-            }
-        </script>
-		
-		<div id="3" style="display:block" class="inputID">
-			<form name="form_input_id"> 
-				<input type="text" id="form_id" name="id"  maxlength="4" placeholder="ID командира" >
-			</form>	
-			
-		<!--<script type="text/javascript">
+
+<head>
+    <meta name="inmobi-site-verification" content="79ccca88631a95d3d2960098aac62ad9">
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <title>Commander for WoT</title>
+</head>
+
+<body>
+
+    <script>
+        // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
+        show.visible = '2';
+        show.hidden = '3';
+
+        function show() {
+            show.hidden = show.visible;
+            show.visible = (show.visible === '2') ? '3' : '2';
+            document.getElementById(show.visible).style.display = 'none';
+            document.getElementById(show.hidden).style.display = 'block';
+        }
+    </script>
+
+    <div id="3" style="display:block" class="inputID">
+        <form name="form_input_id">
+            <input type="text" id="form_id" name="id" maxlength="4" placeholder="ID командира">
+        </form>
+
+        <!--<script type="text/javascript">
 			var inmobi_conf = { 
 				siteid : "c0dd7a54db164c4880b606ef712ebede", 
 				slot : "10", 
@@ -40,218 +43,198 @@
 			};
 		</script>
 		<script type="text/javascript" src="http://cf.cdn.inmobi.com/ad/inmobi.js"></script>-->
-		
-			<a href="index.html"><img id="rer" src="img/back.png" class="back"></a>
-			<img src="img/next.png" align="right"  class="next" onClick="load_data_by_id(); show();">
-		</div>
-		<!-- Блок с картой-->
-		<div id="2" style="display:none" class="loadMap">
-				
-				<img id="map" src="img/load.gif" width="100%" style=" position: absolute; z-index: 1; left: 0%"  >
-				<img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%"  >
-				<img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%"  >
-		
-				<img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%"  >
-                <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%"  >
-                <img id="lt3" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%"  >
-                <img id="lt4" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%"  >
-                <img id="lt5" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%"  >
-                <img id="lt6" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%"  >
-                <img id="lt7" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%"  >
-                <img id="lt8" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%"  >
-                <img id="lt9" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%"  >
-                <img id="lt10" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%"  >
-               
-			    <img id="pt1" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 10%;"  >
-                <img id="pt2" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%;top: 10%;"  >
-                <img id="pt3" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 10%;"  >
-                <img id="pt4" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 10%;"  >
-                <img id="pt5" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 10%;"  >
-                <img id="pt6" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 10%;"  >
-                <img id="pt7" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 10%;"  >
-                <img id="pt8" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 10%;"  >
-                <img id="pt9" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 10%;"  >
-                <img id="pt10" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 10%;"  >
-                
-				<img id="st1" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 20%;"  >
-                <img id="st2" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 20%;"  >
-                <img id="st3" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 20%;"  >
-                <img id="st4" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 20%;"  >
-                <img id="st5" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 20%;"  >
-                <img id="st6" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 20%;"  >
-                <img id="st7" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 20%;"  >
-                <img id="st8" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 20%;"  >
-                <img id="st9" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 20%;"  >
-                <img id="st10" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 20%;"  >
-                
-				<img id="tt1" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 30%;"  >
-                <img id="tt2" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 30%;"  >
-                <img id="tt3" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 30%;"  >
-                <img id="tt4" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 30%;"  >
-                <img id="tt5" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 30%;"  >
-                <img id="tt6" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 30%;"  >
-                <img id="tt7" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 30%;"  >
-                <img id="tt8" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 30%;"  >
-                <img id="tt9" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 30%;"  >
-                <img id="tt10" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 30%;"  >
-                
-				<img id="sense1" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 40%;"  >
-                <img id="sense2" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 40%;"  >
-                <img id="sense3" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 40%;"  >
-                
-				<img id="danger1" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 40%;"  >
-                <img id="danger2" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 40%;"  >
-                <img id="danger3" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 40%;"  >
-                
-				<img id="alarm1" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 40%;"  >
-                <img id="alarm2" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 40%;"  >
-                <img id="alarm3" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 40%;"  >
-				
-				
-	
-		<script>
-		
-		
-		function load_data_by_id(){
-		var number_letter = 8;
-		var h = "";
-		var w = "";
-		var Xt = "";
-		var value_of = "11";
-		var id_for_load = document.getElementById("form_id").value;
-		$.post( 'http://commander4wot.ru/load.php', {dat:id_for_load}, success);
-				function success(msg)   {
-				var stoka = msg;	// загрузился массив данных
-				var map_name = stoka.substr(5, 2); 	// выбираем 2 символа, начиная с 5 (номер карты)
-				var mappath  = 'img/clean/' + map_name + '.jpg';
-                var map      = document.getElementById("map");
-				map.src      = mappath;
-				map.class    = map_name;
-               	var ii = 1;
-				while (ii < 8) {
-				if (ii==1){Xt='lt'};
-				if (ii==2){Xt='st'};
-				if (ii==3){Xt='tt'};
-				if (ii==4){Xt='pt'};
-				if (ii==5){Xt='sense'};
-				if (ii==6){Xt='danger'};
-				if (ii==7){Xt='alarm'};
-				var i = 1; 
-				if (Xt=="sense") {value_of="4"};
-				while (i < value_of) {
-				while (stoka.substr(number_letter, 1) != ","){ //проверяем первые символы до зпт
-				w = w + stoka.substr(number_letter, 1);
-				number_letter++;
-				}
-				number_letter++; // пропускаем зпт
-				while (stoka.substr(number_letter, 1) != "."){ //проверяем первые символы до тчк
-				h = h + stoka.substr(number_letter, 1);
-				var top_h = document.documentElement.clientWidth*h/100; //рассчитываем положение сверху исходя из процентов и ширины
-				number_letter++;
-				}
-				number_letter++; // пропускаем тчк
-				if (w+h != "0000") {
-				var elem = document.getElementById(Xt+i);
-				elem.style.top=top_h+'px'; 
-                elem.style.left=w+'%'; 
-				elem.style.display='block';
-				}
-				i++;
-				h = "";
-				w = "";
-				}
-				ii++;
-				}
 
-				}
-		
-		
-		}
-		
-		</script>
-		
-		<div id="4" class="div_buttons">
-		<img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%"><img src="img/back.png"  width="50%" onClick="show();"></a><img src="img/refresh.png"  width="50%" onClick="load_data_by_id();">
-	</div>
-		<script>
-		var number_of_type = '1';
-		var number_of_color = '1';
-		var map      = document.getElementById("map");
-		
-		function type_standart(){
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/standart/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}
-		
-		function type_meet(){		
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/meet/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}
-		
-		function type_storm(){
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/storm/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}	
-		
-		function color(){
-		var adding = document.getElementById('color_img');
-		var map_name = map.class;
-		if (number_of_color=='1'){
-		adding.src='img/add/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		number_of_color = '2';
-		}
-		else {		
-		adding.style.display='none';
-		number_of_color = '1';
-		}
-		}
+        <a href="index.html"><img id="rer" src="img/back.png" class="back">
+        </a>
+        <img src="img/next.png" align="right" class="next" onClick="load_data_by_id(); show();">
+    </div>
+    <!-- Блок с картой-->
+    <div id="2" style="display:none" class="loadMap">
 
-	</script>
+        <img id="map" src="img/load.gif" width="100%" style=" position: absolute; z-index: 1; left: 0%">
+        <img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%">
+        <img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%">
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		</div>
-       <script type="text/javascript" src="cordova.js"></script>
-    </body>
+        <img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%">
+        <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%">
+        <img id="lt3" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%">
+        <img id="lt4" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%">
+        <img id="lt5" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%">
+        <img id="lt6" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%">
+        <img id="lt7" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%">
+        <img id="lt8" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%">
+        <img id="lt9" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%">
+        <img id="lt10" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%">
+
+        <img id="pt1" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 10%;">
+        <img id="pt2" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%;top: 10%;">
+        <img id="pt3" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 10%;">
+        <img id="pt4" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 10%;">
+        <img id="pt5" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 10%;">
+        <img id="pt6" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 10%;">
+        <img id="pt7" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 10%;">
+        <img id="pt8" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 10%;">
+        <img id="pt9" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 10%;">
+        <img id="pt10" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 10%;">
+
+        <img id="st1" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 20%;">
+        <img id="st2" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 20%;">
+        <img id="st3" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 20%;">
+        <img id="st4" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 20%;">
+        <img id="st5" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 20%;">
+        <img id="st6" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 20%;">
+        <img id="st7" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 20%;">
+        <img id="st8" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 20%;">
+        <img id="st9" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 20%;">
+        <img id="st10" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 20%;">
+
+        <img id="tt1" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 30%;">
+        <img id="tt2" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 30%;">
+        <img id="tt3" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 30%;">
+        <img id="tt4" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 30%;">
+        <img id="tt5" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 30%;">
+        <img id="tt6" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 30%;">
+        <img id="tt7" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 30%;">
+        <img id="tt8" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 30%;">
+        <img id="tt9" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 30%;">
+        <img id="tt10" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 30%;">
+
+        <img id="sense1" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 40%;">
+        <img id="sense2" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 40%;">
+        <img id="sense3" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 40%;">
+
+        <img id="danger1" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 40%;">
+        <img id="danger2" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 40%;">
+        <img id="danger3" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 40%;">
+
+        <img id="alarm1" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 40%;">
+        <img id="alarm2" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 40%;">
+        <img id="alarm3" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 40%;">
+
+
+
+        <script>
+            function load_data_by_id() {
+                var number_letter = 8;
+                var h = "";
+                var w = "";
+                var Xt = "";
+                var value_of = "11";
+                var id_for_load = document.getElementById("form_id").value;
+                $.post('http://commander4wot.ru/load.php', {
+                    dat: id_for_load
+                }, success);
+
+                function success(msg) {
+                    var stoka = msg; // загрузился массив данных
+                    var map_name = stoka.substr(5, 2); // выбираем 2 символа, начиная с 5 (номер карты)
+                    var mappath = 'img/clean/' + map_name + '.jpg';
+                    var map = document.getElementById("map");
+                    map.src = mappath;
+                    map.class = map_name;
+                    var ii = 1;
+                    while (ii < 8) {
+                        if (ii == 1) {
+                            Xt = 'lt'
+                        };
+                        if (ii == 2) {
+                            Xt = 'st'
+                        };
+                        if (ii == 3) {
+                            Xt = 'tt'
+                        };
+                        if (ii == 4) {
+                            Xt = 'pt'
+                        };
+                        if (ii == 5) {
+                            Xt = 'sense'
+                        };
+                        if (ii == 6) {
+                            Xt = 'danger'
+                        };
+                        if (ii == 7) {
+                            Xt = 'alarm'
+                        };
+                        var i = 1;
+                        if (Xt == "sense") {
+                            value_of = "4"
+                        };
+                        while (i < value_of) {
+                            while (stoka.substr(number_letter, 1) != ",") { //проверяем первые символы до зпт
+                                w = w + stoka.substr(number_letter, 1);
+                                number_letter++;
+                            }
+                            number_letter++; // пропускаем зпт
+                            while (stoka.substr(number_letter, 1) != ".") { //проверяем первые символы до тчк
+                                h = h + stoka.substr(number_letter, 1);
+                                var top_h = document.documentElement.clientWidth * h / 100; //рассчитываем положение сверху исходя из процентов и ширины
+                                number_letter++;
+                            }
+                            number_letter++; // пропускаем тчк
+                            if (w + h != "0000") {
+                                var elem = document.getElementById(Xt + i);
+                                elem.style.top = top_h + 'px';
+                                elem.style.left = w + '%';
+                                elem.style.display = 'block';
+                            }
+                            i++;
+                            h = "";
+                            w = "";
+                        }
+                        ii++;
+                    }
+
+                }
+
+
+            }
+        </script>
+
+        <div id="4" class="div_buttons">
+            <img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%"><img src="img/back.png" width="50%" onClick="show();">
+            </a><img src="img/refresh.png" width="50%" onClick="load_data_by_id();">
+        </div>
+        <script>
+            var number_of_type = '1';
+            var number_of_color = '1';
+            var map = document.getElementById("map");
+
+            function type_standart() {
+                var map_name = map.class;
+                var adding = document.getElementById('type_img');
+                adding.src = 'img/standart/' + map_name + '.png'; // map_name вместо 02
+                adding.style.display = 'block';
+            }
+
+            function type_meet() {
+                var map_name = map.class;
+                var adding = document.getElementById('type_img');
+                adding.src = 'img/meet/' + map_name + '.png'; // map_name вместо 02
+                adding.style.display = 'block';
+            }
+
+            function type_storm() {
+                var map_name = map.class;
+                var adding = document.getElementById('type_img');
+                adding.src = 'img/storm/' + map_name + '.png'; // map_name вместо 02
+                adding.style.display = 'block';
+            }
+
+            function color() {
+                var adding = document.getElementById('color_img');
+                var map_name = map.class;
+                if (number_of_color == '1') {
+                    adding.src = 'img/add/' + map_name + '.png'; // map_name вместо 02
+                    adding.style.display = 'block';
+                    number_of_color = '2';
+                } else {
+                    adding.style.display = 'none';
+                    number_of_color = '1';
+                }
+            }
+        </script>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+
 </html>

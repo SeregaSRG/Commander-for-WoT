@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
-		<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Commander for WoT</title>
-    </head>
-    <body>
-	
-        <script>
-            // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
-            show.visible = '2';
-            show.hidden = '3';
-            function show(){
-               show.hidden = show.visible;
-               show.visible = (show.visible === '2')?'3':'2';
-               document.getElementById(show.visible).style.display = 'none';
-               document.getElementById(show.hidden).style.display = 'block';
-            }
-        </script>
-		
-        <div id="3" style="display:block" class="select">
-            <form id="mapselform" >
-                <select id="mymenu" >
-					<optgroup class="summer_map"label="Летние карты">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>Commander for WoT</title>
+</head>
+
+<body>
+
+    <script>
+        // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
+        show.visible = '2';
+        show.hidden = '3';
+
+        function show() {
+            show.hidden = show.visible;
+            show.visible = (show.visible === '2') ? '3' : '2';
+            document.getElementById(show.visible).style.display = 'none';
+            document.getElementById(show.hidden).style.display = 'block';
+        }
+    </script>
+
+    <div id="3" style="display:block" class="select">
+        <form id="mapselform">
+            <select id="mymenu">
+                <optgroup class="summer_map" label="Летние карты">
                     <option value="02">Вестфилд</option>
                     <option value="03">Жемчужная река </option>
                     <option value="05">Карелия</option>
@@ -39,393 +42,384 @@
                     <option value="11">Монастырь</option>
                     <option value="12">Мурованка</option>
                     <option value="13">Перевал</option>
-					<option value="15">Порт</option>
-					<option value="16">Провинция</option>
+                    <option value="15">Порт</option>
+                    <option value="16">Провинция</option>
                     <option value="17">Прохоровка</option>
                     <option value="18">Редшир</option>
                     <option value="19">Рудники</option>
                     <option value="20">Руинберг</option>
                     <option value="21">Рыбацкая бухта</option>
-					<option value="24">Северо-Запад</option>
-					<option value="25">Степи</option>	
-					<option value="26">Тихий берег</option>
+                    <option value="24">Северо-Запад</option>
+                    <option value="25">Степи</option>
+                    <option value="26">Тихий берег</option>
                     <option value="27">Топь</option>
                     <option value="28">Тундра</option>
                     <option value="29">Уайдпарк</option>
                     <option value="30">Утёс</option>
-					<option value="31">Фьорды</option>
-					<option value="32">Хайвей</option>
+                    <option value="31">Фьорды</option>
+                    <option value="32">Хайвей</option>
                     <option value="33">Химмельсдорф</option>
                     <option value="34">Хребет дракона</option>
-					<option value="36">Энск</option>
+                    <option value="36">Энск</option>
                     <option value="38">Южный берег</option>
                     <option value="39">Скрытая деревня</option>
-					</optgroup>
-					
-					<optgroup class="desert_map" label="Пустынные карты">
+                </optgroup>
+
+                <optgroup class="desert_map" label="Пустынные карты">
                     <option value="01">Аэродром</option>
                     <option value="14">Песчаная река</option>
-					<option value="35">Эль-Халлуф</option>
-					</optgroup>
-					
-					<optgroup class="winter_map" label="Зимние карты">
-					<option value="40">Виндсторм</option>
-                    <option value="04">Заполярье</option>
-					<option value="22">Священная долина</option>
-                    <option value="23">Северогорск</option>
-					<option value="41">Харьков</option>
-					<option value="37">Эрленберг</option>
-					</optgroup>
-                    
-                    
-                    
-                </select>
-            </form>
-            <a href="index.html"><img id="rer" src="img/back.png" class="back"></a>
-            <img src="img/next.png" align="right"  class="next" onClick="show();">
-        </div>
-        <div  id="2" style="display:none" class="main">
-            <div class="div_canvas">
-                <script>
-                    // canvas на котором рисуется карта. Запускается после выбора элемента из списка
-                                   var select = document.getElementById('mymenu');
-                                   mymenu.addEventListener('change', function() {
-                                   var value = mymenu.value;
-                                   var mappath = 'img/clean/' + value + '.jpg';
-                                   var map    = document.getElementById("map");
-                                   map.src      = mappath;    
-								   map.class    = value;		
+                    <option value="35">Эль-Халлуф</option>
+                </optgroup>
 
-									var del = document.getElementById('type_img');
-									del.style.display='none';
-									
-									var del = document.getElementById('color_img');
-									del.style.display='none';
-                                   });
-                    
-                               
-                </script>
-				<img id="map" src="img/nomap.png" width="100%" style=" position: absolute; z-index: 1; left: 0%"  >
-				<img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%"  >
-				<img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%"  >
-				
-                <img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt3" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt4" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt5" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt6" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt7" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt8" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt9" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="lt10" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-               
-			   <img id="pt1" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt2" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%;top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt3" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt4" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt5" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt6" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt7" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt8" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt9" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="pt10" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                
-				<img id="st1" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st2" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st3" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st4" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st5" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st6" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st7" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st8" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st9" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="st10" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                
-				<img id="tt1" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt2" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt3" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt4" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt5" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt6" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt7" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt8" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt9" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="tt10" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                
-				<img id="sense1" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="sense2" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="sense3" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                
-				<img id="danger1" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="danger2" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="danger3" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                
-				<img id="alarm1" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="alarm2" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-                <img id="alarm3" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
-				
-                
-                <script>
-                    function move_object(event) { 
-                    // Подавить событие 
-                    event.preventDefault(); 
-                    var left=event.touches[0].pageX; 
-                    var top=event.touches[0].pageY; 
-                    var name=event.touches[0].target; 
-                    // Переместить элемент 
-                    var el=document.getElementById(tmp); 
-                    el.style.top=top+'px'; 
-                    el.style.left=left+'px'; 
-                    } 
-                    	
-                </script>
-				
-            </div>
+                <optgroup class="winter_map" label="Зимние карты">
+                    <option value="40">Виндсторм</option>
+                    <option value="04">Заполярье</option>
+                    <option value="22">Священная долина</option>
+                    <option value="23">Северогорск</option>
+                    <option value="41">Харьков</option>
+                    <option value="37">Эрленберг</option>
+                </optgroup>
+
+
+
+            </select>
+        </form>
+        <a href="index.html"><img id="rer" src="img/back.png" class="back">
+        </a>
+        <img src="img/next.png" align="right" class="next" onClick="show();">
+    </div>
+    <div id="2" style="display:none" class="main">
+        <div class="div_canvas">
             <script>
-			
-                // Скрипт делает блоки 4 и 5 попеременно видимыми при нажатии кнопки
-                show1.visible = '5';
-                show1.hidden = '4';
-                function show1(){
-                   show1.hidden = show1.visible;
-                   show1.visible = (show1.visible === '5')?'4':'5';
-                   document.getElementById(show1.visible).style.display = 'none';
-                   document.getElementById(show1.hidden).style.display = 'block';
+                // canvas на котором рисуется карта. Запускается после выбора элемента из списка
+                var select = document.getElementById('mymenu');
+                mymenu.addEventListener('change', function() {
+                    var value = mymenu.value;
+                    var mappath = 'img/clean/' + value + '.jpg';
+                    var map = document.getElementById("map");
+                    map.src = mappath;
+                    map.class = value;
+
+                    var del = document.getElementById('type_img');
+                    del.style.display = 'none';
+
+                    var del = document.getElementById('color_img');
+                    del.style.display = 'none';
+                });
+            </script>
+            <img id="map" src="img/nomap.png" width="100%" style=" position: absolute; z-index: 1; left: 0%">
+            <img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%">
+            <img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%">
+
+            <img id="lt1" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt2" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt3" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt4" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt5" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt6" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt7" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt8" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt9" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="lt10" src="img/lt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="pt1" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt2" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%;top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt3" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt4" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt5" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt6" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt7" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt8" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt9" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="pt10" src="img/pt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 10%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="st1" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st2" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st3" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st4" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st5" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st6" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st7" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st8" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st9" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="st10" src="img/st.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 20%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="tt1" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt2" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt3" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt4" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt5" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt6" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt7" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt8" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt9" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="tt10" src="img/tt.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 90%; top: 30%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="sense1" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 0%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="sense2" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 10%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="sense3" src="img/sens.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 20%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="danger1" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 30%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="danger2" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 40%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="danger3" src="img/danger.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 50%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+            <img id="alarm1" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 3; left: 60%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="alarm2" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 4; left: 70%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+            <img id="alarm3" src="img/alarm.png" width="10%" style="display: none; position: absolute;  z-index: 5; left: 80%; top: 40%;" ontouchstart="tmp=this.id; " ontouchmove="move_object(event);">
+
+
+            <script>
+                function move_object(event) {
+                    // Подавить событие 
+                    event.preventDefault();
+                    var left = event.touches[0].pageX;
+                    var top = event.touches[0].pageY;
+                    var name = event.touches[0].target;
+                    // Переместить элемент 
+                    var el = document.getElementById(tmp);
+                    el.style.top = top + 'px';
+                    el.style.left = left + 'px';
                 }
             </script>
-			
-            <div id="4" class="div_buttons">
-                <img id="butPT" src="img/pt.png" width="20%" onClick="addingPT();" ><img id="butLT" src="img/lt.png" width="20%" onClick="addingLT();" ><img id="butST" src="img/st.png" width="20%" onClick="addingST();" ><img id="butTT" src="img/tt.png" width="20%" onClick="addingTT();" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><img src="img/back.png" width="50%" onClick="show();"><img src="img/send.png" width="50%" onClick="send();" >
-                <script>
-                    var numberPT = 0;
-                    var numberLT = 0;
-                    var numberST = 0;
-                    var numberTT = 0;
-                    var numberSense = 0;
-                    var numberDanger = 0;
-                    var numberAlarm = 0;
-                    
-                    function addingPT() {
-                    	numberPT++;
-                    	var idPT = 'pt' + numberPT;
-                    	var objectPT = document.getElementById(idPT);
-                    	objectPT.style.display='block';
-                    }
-                    
-                    function addingLT() {
-                    	numberLT++;
-                    	var idLT = 'lt' + numberLT;
-                    	var objectLT = document.getElementById(idLT);
-                    	objectLT.style.display='block';
-                    }
-                    
-                    function addingST() {
-                    	numberST++;
-                    	var idST = 'st' + numberST;
-                    	var objectST = document.getElementById(idST);
-                    	objectST.style.display='block';
-                    }
-                    
-                    function addingTT() {
-                    	numberTT++;
-                    	var idTT = 'tt' + numberTT;
-                    	var objectTT = document.getElementById(idTT);
-                    	objectTT.style.display='block';
-                    }
-                    
-                    function addingSense() {
-                    	numberSense++;
-                    	var idSense = 'sense' + numberSense;
-                    	var objectSense = document.getElementById(idSense);
-                    	objectSense.style.display='block';
-                    }
-                    
-                    function addingDanger() {
-                    	numberDanger++;
-                    	var idDanger = 'danger' + numberDanger;
-                    	var objectDanger = document.getElementById(idDanger);
-                    	objectDanger.style.display='block';
-                    }
-                    
-                    function addingAlarm() {
-                    	numberAlarm++;
-                    	var idAlarm = 'alarm' + numberAlarm;
-                    	var objectAlarm = document.getElementById(idAlarm);
-                    	objectAlarm.style.display='block';
-                    }
-                    
-                </script>
-            </div>
-            <div id="5" style="display:none" class="div_buttons">
-                <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();" ><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();" ><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();" ><img id="butNONE" src="img/none.png" width="20%" ><img id="butMORE" src="img/more.png" width="20%" onClick="show1();" ><div align="center"><img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%"></div>
 
-				<script>
-		var number_of_color = '1';
-		var map      = document.getElementById("map");
-		
-		function type_standart(){
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/standart/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}
-		
-		function type_meet(){		
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/meet/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}
-		
-		function type_storm(){
-		var map_name = map.class;
-		var adding = document.getElementById('type_img');
-		adding.src='img/storm/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		}	
-		
-		function color(){
-		var adding = document.getElementById('color_img');
-		var map_name = map.class;
-		if (number_of_color=='1'){
-		adding.src='img/add/'+map_name+'.png'; // map_name вместо 02
-		adding.style.display='block';
-		number_of_color = '2';
-		}
-		else {		
-		adding.style.display='none';
-		number_of_color = '1';
-		}
-		}
-
-	</script>
-				
-				
-				<script>
-				
-				var id = 1111 + Math.random()*(9999+1-1111);
-				id = id^0; // округление битовым оператором
-				
-				function send () {
-				var database = "";
-				value = mymenu.value;
-				database = id +'.'+value;
-				//lt
-				var i = 1;
-				while (i < 11) {
-				var elem = document.getElementById('lt'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//st
-				var i = 1;
-				while (i < 11) {
-				var elem = document.getElementById('st'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//tt
-				var i = 1;
-				while (i < 11) {
-				var elem = document.getElementById('tt'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//pt
-				var i = 1;
-				while (i < 11) {
-				var elem = document.getElementById('pt'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//sense
-				var i = 1;
-				while (i < 4) {
-				var elem = document.getElementById('sense'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//danger
-				var i = 1;
-				while (i < 4) {
-				var elem = document.getElementById('danger'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				//alarm
-				var i = 1;
-				while (i < 4) {
-				var elem = document.getElementById('alarm'+i);
-				var w = Math.round(elem.offsetLeft/document.documentElement.clientWidth*100);
-				var h = Math.round(elem.offsetTop/document.documentElement.clientWidth*100);
-				var tmppp = w + ',' + h;
-				if (tmppp == "0,0") {
-				database = database + '.00,00';
-				}
-				else {
-				database = database + '.' + w +','+h;
-				}
-				i++;
-				}
-				database = database + '.';
-				$.post( 'http://commander4wot.ru/obr.php', {dat:database}, success);
-				function success(msg)   {
-				alert (msg);
-				}
-				}
-				</script>
-	
-            </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-    </body>
+        <script>
+            // Скрипт делает блоки 4 и 5 попеременно видимыми при нажатии кнопки
+            show1.visible = '5';
+            show1.hidden = '4';
+
+            function show1() {
+                show1.hidden = show1.visible;
+                show1.visible = (show1.visible === '5') ? '4' : '5';
+                document.getElementById(show1.visible).style.display = 'none';
+                document.getElementById(show1.hidden).style.display = 'block';
+            }
+        </script>
+
+        <div id="4" class="div_buttons">
+            <img id="butPT" src="img/pt.png" width="20%" onClick="addingPT();"><img id="butLT" src="img/lt.png" width="20%" onClick="addingLT();"><img id="butST" src="img/st.png" width="20%" onClick="addingST();"><img id="butTT" src="img/tt.png" width="20%" onClick="addingTT();"><img id="butMORE" src="img/more.png" width="20%" onClick="show1();"><img src="img/back.png" width="50%" onClick="show();"><img src="img/send.png" width="50%" onClick="send();">
+            <script>
+                var numberPT = 0;
+                var numberLT = 0;
+                var numberST = 0;
+                var numberTT = 0;
+                var numberSense = 0;
+                var numberDanger = 0;
+                var numberAlarm = 0;
+
+                function addingPT() {
+                    numberPT++;
+                    var idPT = 'pt' + numberPT;
+                    var objectPT = document.getElementById(idPT);
+                    objectPT.style.display = 'block';
+                }
+
+                function addingLT() {
+                    numberLT++;
+                    var idLT = 'lt' + numberLT;
+                    var objectLT = document.getElementById(idLT);
+                    objectLT.style.display = 'block';
+                }
+
+                function addingST() {
+                    numberST++;
+                    var idST = 'st' + numberST;
+                    var objectST = document.getElementById(idST);
+                    objectST.style.display = 'block';
+                }
+
+                function addingTT() {
+                    numberTT++;
+                    var idTT = 'tt' + numberTT;
+                    var objectTT = document.getElementById(idTT);
+                    objectTT.style.display = 'block';
+                }
+
+                function addingSense() {
+                    numberSense++;
+                    var idSense = 'sense' + numberSense;
+                    var objectSense = document.getElementById(idSense);
+                    objectSense.style.display = 'block';
+                }
+
+                function addingDanger() {
+                    numberDanger++;
+                    var idDanger = 'danger' + numberDanger;
+                    var objectDanger = document.getElementById(idDanger);
+                    objectDanger.style.display = 'block';
+                }
+
+                function addingAlarm() {
+                    numberAlarm++;
+                    var idAlarm = 'alarm' + numberAlarm;
+                    var objectAlarm = document.getElementById(idAlarm);
+                    objectAlarm.style.display = 'block';
+                }
+            </script>
+        </div>
+        <div id="5" style="display:none" class="div_buttons">
+            <img id="butSense" src="img/light.png" width="20%" onClick="addingSense();"><img id="butDanger" src="img/danger.png" width="20%" onClick="addingDanger();"><img id="butAlarm" src="img/alarm.png" width="20%" onClick="addingAlarm();"><img id="butNONE" src="img/none.png" width="20%"><img id="butMORE" src="img/more.png" width="20%" onClick="show1();">
+            <div align="center"><img src="img/standart.png" onClick="type_standart();" width="20%"><img src="img/meet.png" onClick="type_meet();" width="20%"><img src="img/storm.png" onClick="type_storm();" width="20%"><img src="img/clean.png" onClick="color();" width="20%">
+            </div>
+
+            <script>
+                var number_of_color = '1';
+                var map = document.getElementById("map");
+
+                function type_standart() {
+                    var map_name = map.class;
+                    var adding = document.getElementById('type_img');
+                    adding.src = 'img/standart/' + map_name + '.png'; // map_name вместо 02
+                    adding.style.display = 'block';
+                }
+
+                function type_meet() {
+                    var map_name = map.class;
+                    var adding = document.getElementById('type_img');
+                    adding.src = 'img/meet/' + map_name + '.png'; // map_name вместо 02
+                    adding.style.display = 'block';
+                }
+
+                function type_storm() {
+                    var map_name = map.class;
+                    var adding = document.getElementById('type_img');
+                    adding.src = 'img/storm/' + map_name + '.png'; // map_name вместо 02
+                    adding.style.display = 'block';
+                }
+
+                function color() {
+                    var adding = document.getElementById('color_img');
+                    var map_name = map.class;
+                    if (number_of_color == '1') {
+                        adding.src = 'img/add/' + map_name + '.png'; // map_name вместо 02
+                        adding.style.display = 'block';
+                        number_of_color = '2';
+                    } else {
+                        adding.style.display = 'none';
+                        number_of_color = '1';
+                    }
+                }
+				
+				//***************************************************
+                var id = 1111 + Math.random() * (9999 + 1 - 1111);
+                id = id ^ 0; // округление битовым оператором
+
+                function send() {
+                    var database = "";
+                    value = mymenu.value;
+                    database = id + '.' + value;
+                    //lt
+                    var i = 1;
+                    while (i < 11) {
+                        var elem = document.getElementById('lt' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //st
+                    var i = 1;
+                    while (i < 11) {
+                        var elem = document.getElementById('st' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //tt
+                    var i = 1;
+                    while (i < 11) {
+                        var elem = document.getElementById('tt' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //pt
+                    var i = 1;
+                    while (i < 11) {
+                        var elem = document.getElementById('pt' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //sense
+                    var i = 1;
+                    while (i < 4) {
+                        var elem = document.getElementById('sense' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //danger
+                    var i = 1;
+                    while (i < 4) {
+                        var elem = document.getElementById('danger' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    //alarm
+                    var i = 1;
+                    while (i < 4) {
+                        var elem = document.getElementById('alarm' + i);
+                        var w = Math.round(elem.offsetLeft / document.documentElement.clientWidth * 100);
+                        var h = Math.round(elem.offsetTop / document.documentElement.clientWidth * 100);
+                        var tmppp = w + ',' + h;
+                        if (tmppp == "0,0") {
+                            database = database + '.00,00';
+                        } else {
+                            database = database + '.' + w + ',' + h;
+                        }
+                        i++;
+                    }
+                    database = database + '.';
+                    $.post('http://commander4wot.ru/obr.php', {
+                        dat: database
+                    }, success);
+
+                    function success(msg) {
+                        alert(msg);
+                    }
+                }
+            </script>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+</body>
+
 </html>
