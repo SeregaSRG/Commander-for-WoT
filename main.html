@@ -13,30 +13,6 @@
 </head>
 
 <body>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-(function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter26794617 = new Ya.Metrika({id:26794617,
-                    clickmap:true});
-        } catch(e) { }
-    });
-
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/26794617" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
     <script>
         // Скрипт делает блоки 2 и 3 попеременно видимыми при нажатии кнопки
         show.visible = '2';
@@ -130,7 +106,7 @@
                     del.style.display = 'none';
                 });
             </script>
-            <img id="map" src="img/nomap.png" width="100%" style=" position: absolute; z-index: 1; left: 0%">
+            <img id="map" src="img/clean/02.jpg" width="100%" style=" position: absolute; z-index: 1; left: 0%">
             <img id="type_img" src="img/standart.png" width="100%" style=" position: absolute; display: none; z-index: 2; left: 0%">
             <img id="color_img" src="img/add.png" width="100%" style=" position: absolute; display: none; z-index: 10; left: 0%">
 
@@ -286,7 +262,7 @@
             <script>
                 var number_of_color = '1';
                 var map = document.getElementById("map");
-
+				map.class = '02';
                 function type_standart() {
                     var map_name = map.class;
                     var adding = document.getElementById('type_img');
