@@ -40,12 +40,19 @@
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
 		<script>
-		 document.addEventListener("deviceready", onDeviceReady, false);
-		function onDeviceReady() {
 			navigator.splashscreen.show();
-		}
+			function alertDismissed() {
+    // do something
+}
+
+navigator.notification.alert(
+    'You are the winner!',  // message
+    alertDismissed,         // callback
+    'Game Over',            // title
+    'Done'                  // buttonName
+);
 		</script>
-		
+	<p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>	
         <script type="text/javascript">
             app.initialize();
         </script>
