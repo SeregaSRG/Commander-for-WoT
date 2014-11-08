@@ -23,6 +23,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+	<gap:plugin name="org.apache.cordova.inappbrowser" />
 <!-- 	<preference name="SplashScreen" value="splash" />
 	<preference name="SplashScreenDelay" value="2000" />
     <gap:plugin name="org.apache.cordova.battery-status" />
@@ -38,7 +39,7 @@
     <gap:plugin name="org.apache.cordova.file-transfer" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.globalization" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />-->
+    -->
 	<gap:plugin name="org.apache.cordova.splashscreen" />
   <!--  <gap:plugin name="org.apache.cordova.media" />
     <gap:plugin name="org.apache.cordova.network-information" />-->
