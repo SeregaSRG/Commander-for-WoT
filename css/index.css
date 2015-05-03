@@ -48,6 +48,11 @@ body {
     text-align:center;
 }
 
+.bottom {
+position:absolute; /* добавили */
+bottom:0;
+}
+
 .ads {
 text-align:center;
 }

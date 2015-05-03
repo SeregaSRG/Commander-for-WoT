@@ -38,10 +38,15 @@
 			<a href="connect.html"><img src="img/connect.png" align="center" width="80%" class="connect"></a>
 			<img src="img/web.png" align="center" width="50%" class="connect" onClick="openweb();"> 
         </div>
+		<img src="img/1024x150.png" align="center" class="bottom" width="100%"  onClick="openAD();">
 		<script>
 		function openweb (){
 			var ref = window.open(encodeURI('http://commander4wot.ru/'), '_system', 'location=yes');
 			//navigator.app.loadUrl("http://commander4wot.ru/");
+		}
+		function openAD(){
+			var ref = window.open(encodeURI('https://play.google.com/store/apps/details?id=appinventor.ai_DimSer_company.System_Optimus&hl=ru'), '_system', 'location=yes');
+			//navigator.app.loadUrl("https://play.google.com/store/apps/details?id=appinventor.ai_DimSer_company.System_Optimus&hl=ru");
 		}
 		</script>
         <script type="text/javascript" src="cordova.js"></script>

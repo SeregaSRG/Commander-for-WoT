@@ -31,15 +31,19 @@
             <select id="mymenu">
                 <optgroup class="summer_map" label="Летние карты">
                     <option value="02">Вестфилд</option>
+					<option value="42">Граница империи</option>
                     <option value="03">Жемчужная река </option>
+					<option value="43">Затерянный город</option>
                     <option value="05">Карелия</option>
                     <option value="06">Комарин</option>
                     <option value="07">Лайв Окс</option>
                     <option value="08">Ласвилль</option>
                     <option value="09">Линия Зигфрида</option>
                     <option value="10">Малиновка</option>
+					<option value="44">Миттенгард</option>
                     <option value="11">Монастырь</option>
                     <option value="12">Мурованка</option>
+					<option value="45">Оверлорд</option>
                     <option value="13">Перевал</option>
                     <option value="15">Порт</option>
                     <option value="16">Провинция</option>
@@ -48,7 +52,9 @@
                     <option value="19">Рудники</option>
                     <option value="20">Руинберг</option>
                     <option value="21">Рыбацкая бухта</option>
+					<option value="39">Скрытая деревня</option>
                     <option value="24">Северо-Запад</option>
+					<option value="46">Сталинград</option>
                     <option value="25">Степи</option>
                     <option value="26">Тихий берег</option>
                     <option value="27">Топь</option>
@@ -61,7 +67,6 @@
                     <option value="34">Хребет дракона</option>
                     <option value="36">Энск</option>
                     <option value="38">Южный берег</option>
-                    <option value="39">Скрытая деревня</option>
                 </optgroup>
 
                 <optgroup class="desert_map" label="Пустынные карты">
@@ -409,7 +414,7 @@
                     }, success);
 
                     function success(msg) {
-                        alert(msg);
+                        alert('Ваш ID командира: ' + msg);
                     }
                 }
             </script>
