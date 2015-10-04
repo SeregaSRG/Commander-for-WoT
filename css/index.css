@@ -48,13 +48,13 @@ body {
     text-align:center;
 }
 
-.ads {
-text-align:center;
+.bottom {
+position:absolute; /* добавили */
+bottom:0;
 }
 
-.down {
-position: fixed;
-bottom: 0px;
+.ads {
+text-align:center;
 }
 
 input[type="text"] {
