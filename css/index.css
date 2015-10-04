@@ -52,6 +52,11 @@ body {
 text-align:center;
 }
 
+.down {
+position: fixed;
+bottom: 0px;
+}
+
 input[type="text"] {
 font-size: 36px;
 height: 42px;
